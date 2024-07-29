@@ -2,10 +2,8 @@
 {
     partial class LoginForm
     {
-        // Required designer variable.
         private System.ComponentModel.IContainer components = null;
 
-        // Clean up any resources being used.
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -15,7 +13,6 @@
             base.Dispose(disposing);
         }
 
-        // Windows Form Designer generated code
         private void InitializeComponent()
         {
             this.textBoxUsername = new System.Windows.Forms.TextBox();
@@ -56,7 +53,7 @@
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUsername);
             this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();
         }

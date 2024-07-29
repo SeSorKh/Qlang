@@ -12,8 +12,8 @@
         private System.Windows.Forms.Button buttonMoviesWithMultipleDirectors;
         private System.Windows.Forms.Button buttonTotalSales;
         private System.Windows.Forms.Button buttonEmployeeCountInBuilding2w;
-        private System.Windows.Forms.Button buttonSwitchToForm2;
         private System.Windows.Forms.Button buttonExtendExpiration;
+        private System.Windows.Forms.Button buttonSwitchToForm2;
         private System.Windows.Forms.Label labelAccountBalance;
         private System.Windows.Forms.Label labelExpirationDate;
 
@@ -37,8 +37,8 @@
             this.buttonMoviesWithMultipleDirectors = new System.Windows.Forms.Button();
             this.buttonTotalSales = new System.Windows.Forms.Button();
             this.buttonEmployeeCountInBuilding2w = new System.Windows.Forms.Button();
-            this.buttonSwitchToForm2 = new System.Windows.Forms.Button();
             this.buttonExtendExpiration = new System.Windows.Forms.Button();
+            this.buttonSwitchToForm2 = new System.Windows.Forms.Button();
             this.labelAccountBalance = new System.Windows.Forms.Label();
             this.labelExpirationDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -145,38 +145,54 @@
             // 
             // buttonExtendExpiration
             // 
-            this.buttonExtendExpiration.Location = new System.Drawing.Point(620, 460);
+            this.buttonExtendExpiration.Location = new System.Drawing.Point(897, 427);
             this.buttonExtendExpiration.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExtendExpiration.Name = "buttonExtendExpiration";
-            this.buttonExtendExpiration.Size = new System.Drawing.Size(213, 28);
+            this.buttonExtendExpiration.Size = new System.Drawing.Size(132, 28);
             this.buttonExtendExpiration.TabIndex = 9;
-            this.buttonExtendExpiration.Text = "Extend Expiration by 1 Month";
+            this.buttonExtendExpiration.Text = "Extend Expiration";
             this.buttonExtendExpiration.UseVisualStyleBackColor = true;
             this.buttonExtendExpiration.Click += new System.EventHandler(this.buttonExtendExpiration_Click);
             // 
+            // buttonSwitchToForm2
+            // 
+            this.buttonSwitchToForm2.Location = new System.Drawing.Point(764, 427);
+            this.buttonSwitchToForm2.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSwitchToForm2.Name = "buttonSwitchToForm2";
+            this.buttonSwitchToForm2.Size = new System.Drawing.Size(125, 28);
+            this.buttonSwitchToForm2.TabIndex = 10;
+            this.buttonSwitchToForm2.Text = "Switch to Form 2";
+            this.buttonSwitchToForm2.UseVisualStyleBackColor = true;
+            this.buttonSwitchToForm2.Click += new System.EventHandler(this.buttonSwitchToForm2_Click);
+            // 
             // labelAccountBalance
             // 
-            this.labelAccountBalance.Location = new System.Drawing.Point(16, 460);
+            this.labelAccountBalance.AutoSize = true;
+            this.labelAccountBalance.Location = new System.Drawing.Point(16, 470);
+            this.labelAccountBalance.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAccountBalance.Name = "labelAccountBalance";
-            this.labelAccountBalance.Size = new System.Drawing.Size(200, 23);
-            this.labelAccountBalance.TabIndex = 10;
-            this.labelAccountBalance.Text = "Account Balance: ";
+            this.labelAccountBalance.Size = new System.Drawing.Size(118, 17);
+            this.labelAccountBalance.TabIndex = 11;
+            this.labelAccountBalance.Text = "Account Balance:";
             // 
             // labelExpirationDate
             // 
-            this.labelExpirationDate.Location = new System.Drawing.Point(220, 460);
+            this.labelExpirationDate.AutoSize = true;
+            this.labelExpirationDate.Location = new System.Drawing.Point(224, 470);
+            this.labelExpirationDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelExpirationDate.Name = "labelExpirationDate";
-            this.labelExpirationDate.Size = new System.Drawing.Size(200, 23);
-            this.labelExpirationDate.TabIndex = 11;
-            this.labelExpirationDate.Text = "Expiration Date: ";
+            this.labelExpirationDate.Size = new System.Drawing.Size(105, 17);
+            this.labelExpirationDate.TabIndex = 12;
+            this.labelExpirationDate.Text = "Expiration Date:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 509);
-            this.Controls.Add(this.labelAccountBalance);
+            this.ClientSize = new System.Drawing.Size(1045, 500);
             this.Controls.Add(this.labelExpirationDate);
+            this.Controls.Add(this.labelAccountBalance);
+            this.Controls.Add(this.buttonSwitchToForm2);
             this.Controls.Add(this.buttonExtendExpiration);
             this.Controls.Add(this.buttonEmployeeCountInBuilding2w);
             this.Controls.Add(this.buttonTotalSales);
@@ -192,7 +208,7 @@
             this.Text = "MovieApp";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
-
+            this.PerformLayout();
         }
     }
 }

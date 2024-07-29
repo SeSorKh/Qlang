@@ -7,7 +7,6 @@ namespace MovieApp
     public partial class LoginForm : Form
     {
         private NewMovieDBEntities context;
-        public static User LoggedInUser { get; private set; }
 
         public LoginForm()
         {
@@ -24,8 +23,6 @@ namespace MovieApp
 
             if (user != null)
             {
-                LoggedInUser = user;  // Save the logged-in user's information
-
                 var isAdmin = user.IsAdmin;
                 var accountBalance = user.AccountBalance;
                 var expirationDate = user.ExpirationDate;
@@ -38,7 +35,7 @@ namespace MovieApp
                 }
                 else
                 {
-                    form1 = new Form1(isAdmin, accountBalance ?? 0, expirationDate);
+                    form1 = new Form1(isAdmin, accountBalance ?? 0m, expirationDate);
                 }
 
                 form1.Show();

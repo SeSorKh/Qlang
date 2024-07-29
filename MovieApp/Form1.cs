@@ -149,7 +149,7 @@ namespace MovieApp
                 accountBalance -= 5;
                 expirationDate = expirationDate?.AddMonths(1);
 
-                var user = context.Users.FirstOrDefault(u => u.Username == LoginForm.LoggedInUser.Username && u.Password == LoginForm.LoggedInUser.Password);
+                var user = context.Users.FirstOrDefault(u => u.Username == "currentUsername" && u.Password == "currentPassword");
                 if (user != null)
                 {
                     user.AccountBalance = accountBalance;
