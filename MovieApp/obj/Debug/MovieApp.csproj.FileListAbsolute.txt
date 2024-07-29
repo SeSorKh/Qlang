@@ -1,0 +1,17 @@
+C:\Users\Admin\source\repos\MovieApp\bin\Debug\MovieApp.exe.config
+C:\Users\Admin\source\repos\MovieApp\bin\Debug\MovieApp.exe
+C:\Users\Admin\source\repos\MovieApp\bin\Debug\MovieApp.pdb
+C:\Users\Admin\source\repos\MovieApp\bin\Debug\EntityFramework.dll
+C:\Users\Admin\source\repos\MovieApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\source\repos\MovieApp\bin\Debug\EntityFramework.xml
+C:\Users\Admin\source\repos\MovieApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.Form1.resources
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.Properties.Resources.resources
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.csproj.Up2Date
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.exe
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.pdb
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.LoginForm.resources
+C:\Users\Admin\source\repos\MovieApp\obj\Debug\MovieApp.Form2.resources

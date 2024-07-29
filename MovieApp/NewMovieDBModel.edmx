@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NewMovieDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BoxOffices">
+          <Key>
+            <PropertyRef Name="BoxOfficeID" />
+          </Key>
+          <Property Name="BoxOfficeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MovieID" Type="int" />
+          <Property Name="TotalSales" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Buildings">
+          <Key>
+            <PropertyRef Name="BuildingID" />
+          </Key>
+          <Property Name="BuildingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildingName" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Directors">
+          <Key>
+            <PropertyRef Name="DirectorID" />
+          </Key>
+          <Property Name="DirectorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DirectorName" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="BuildingID" Type="int" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+          </Key>
+          <Property Name="LanguageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ReleaseDate" Type="date" />
+          <Property Name="LanguageID" Type="int" />
+        </EntityType>
+        <EntityType Name="MoviesDirectedBy">
+          <Key>
+            <PropertyRef Name="MovieID" />
+            <PropertyRef Name="DirectorID" />
+          </Key>
+          <Property Name="MovieID" Type="int" Nullable="false" />
+          <Property Name="DirectorID" Type="int" Nullable="false" />
+          <Property Name="IsMainDirector" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="AccountBalance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ExpirationDate" Type="date" />
+        </EntityType>
+        <Association Name="FK__BoxOffice__Movie__29572725">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="BoxOffices" Type="Self.BoxOffices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="BoxOffices">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Build__33D4B598">
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="BuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Movies__Language__267ABA7A">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="0..1" />
+          <End Role="Movies" Type="Self.Movies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="LanguageID" />
+            </Principal>
+            <Dependent Role="Movies">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MoviesDir__Direc__2F10007B">
+          <End Role="Directors" Type="Self.Directors" Multiplicity="1" />
+          <End Role="MoviesDirectedBy" Type="Self.MoviesDirectedBy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Directors">
+              <PropertyRef Name="DirectorID" />
+            </Principal>
+            <Dependent Role="MoviesDirectedBy">
+              <PropertyRef Name="DirectorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MoviesDir__Movie__2E1BDC42">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
+          <End Role="MoviesDirectedBy" Type="Self.MoviesDirectedBy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="MoviesDirectedBy">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NewMovieDBModelStoreContainer">
+          <EntitySet Name="BoxOffices" EntityType="Self.BoxOffices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Directors" EntityType="Self.Directors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoviesDirectedBy" EntityType="Self.MoviesDirectedBy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BoxOffice__Movie__29572725" Association="Self.FK__BoxOffice__Movie__29572725">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="BoxOffices" EntitySet="BoxOffices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Build__33D4B598" Association="Self.FK__Employees__Build__33D4B598">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Movies__Language__267ABA7A" Association="Self.FK__Movies__Language__267ABA7A">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="Movies" EntitySet="Movies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MoviesDir__Direc__2F10007B" Association="Self.FK__MoviesDir__Direc__2F10007B">
+            <End Role="Directors" EntitySet="Directors" />
+            <End Role="MoviesDirectedBy" EntitySet="MoviesDirectedBy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MoviesDir__Movie__2E1BDC42" Association="Self.FK__MoviesDir__Movie__2E1BDC42">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="MoviesDirectedBy" EntitySet="MoviesDirectedBy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NewMovieDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BoxOffice">
+          <Key>
+            <PropertyRef Name="BoxOfficeID" />
+          </Key>
+          <Property Name="BoxOfficeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MovieID" Type="Int32" />
+          <Property Name="TotalSales" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Movy" Relationship="Self.FK__BoxOffice__Movie__29572725" FromRole="BoxOffices" ToRole="Movies" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingID" />
+          </Key>
+          <Property Name="BuildingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Build__33D4B598" FromRole="Buildings" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Director">
+          <Key>
+            <PropertyRef Name="DirectorID" />
+          </Key>
+          <Property Name="DirectorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DirectorName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MoviesDirectedBies" Relationship="Self.FK__MoviesDir__Direc__2F10007B" FromRole="Directors" ToRole="MoviesDirectedBy" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BuildingID" Type="Int32" />
+          <NavigationProperty Name="Building" Relationship="Self.FK__Employees__Build__33D4B598" FromRole="Employees" ToRole="Buildings" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+          </Key>
+          <Property Name="LanguageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Movies" Relationship="Self.FK__Movies__Language__267ABA7A" FromRole="Languages" ToRole="Movies" />
+        </EntityType>
+        <EntityType Name="Movy">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReleaseDate" Type="DateTime" Precision="0" />
+          <Property Name="LanguageID" Type="Int32" />
+          <NavigationProperty Name="BoxOffices" Relationship="Self.FK__BoxOffice__Movie__29572725" FromRole="Movies" ToRole="BoxOffices" />
+          <NavigationProperty Name="Language" Relationship="Self.FK__Movies__Language__267ABA7A" FromRole="Movies" ToRole="Languages" />
+          <NavigationProperty Name="MoviesDirectedBies" Relationship="Self.FK__MoviesDir__Movie__2E1BDC42" FromRole="Movies" ToRole="MoviesDirectedBy" />
+        </EntityType>
+        <EntityType Name="MoviesDirectedBy">
+          <Key>
+            <PropertyRef Name="MovieID" />
+            <PropertyRef Name="DirectorID" />
+          </Key>
+          <Property Name="MovieID" Type="Int32" Nullable="false" />
+          <Property Name="DirectorID" Type="Int32" Nullable="false" />
+          <Property Name="IsMainDirector" Type="Boolean" />
+          <NavigationProperty Name="Director" Relationship="Self.FK__MoviesDir__Direc__2F10007B" FromRole="MoviesDirectedBy" ToRole="Directors" />
+          <NavigationProperty Name="Movy" Relationship="Self.FK__MoviesDir__Movie__2E1BDC42" FromRole="MoviesDirectedBy" ToRole="Movies" />
+        </EntityType>
+        <Association Name="FK__BoxOffice__Movie__29572725">
+          <End Role="Movies" Type="Self.Movy" Multiplicity="0..1" />
+          <End Role="BoxOffices" Type="Self.BoxOffice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="BoxOffices">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Build__33D4B598">
+          <End Role="Buildings" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="BuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MoviesDir__Direc__2F10007B">
+          <End Role="Directors" Type="Self.Director" Multiplicity="1" />
+          <End Role="MoviesDirectedBy" Type="Self.MoviesDirectedBy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Directors">
+              <PropertyRef Name="DirectorID" />
+            </Principal>
+            <Dependent Role="MoviesDirectedBy">
+              <PropertyRef Name="DirectorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Movies__Language__267ABA7A">
+          <End Role="Languages" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="Movies" Type="Self.Movy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="LanguageID" />
+            </Principal>
+            <Dependent Role="Movies">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MoviesDir__Movie__2E1BDC42">
+          <End Role="Movies" Type="Self.Movy" Multiplicity="1" />
+          <End Role="MoviesDirectedBy" Type="Self.MoviesDirectedBy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="MoviesDirectedBy">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NewMovieDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BoxOffices" EntityType="Self.BoxOffice" />
+          <EntitySet Name="Buildings" EntityType="Self.Building" />
+          <EntitySet Name="Directors" EntityType="Self.Director" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="Movies" EntityType="Self.Movy" />
+          <EntitySet Name="MoviesDirectedBies" EntityType="Self.MoviesDirectedBy" />
+          <AssociationSet Name="FK__BoxOffice__Movie__29572725" Association="Self.FK__BoxOffice__Movie__29572725">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="BoxOffices" EntitySet="BoxOffices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Build__33D4B598" Association="Self.FK__Employees__Build__33D4B598">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MoviesDir__Direc__2F10007B" Association="Self.FK__MoviesDir__Direc__2F10007B">
+            <End Role="Directors" EntitySet="Directors" />
+            <End Role="MoviesDirectedBy" EntitySet="MoviesDirectedBies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Movies__Language__267ABA7A" Association="Self.FK__Movies__Language__267ABA7A">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="Movies" EntitySet="Movies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MoviesDir__Movie__2E1BDC42" Association="Self.FK__MoviesDir__Movie__2E1BDC42">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="MoviesDirectedBy" EntitySet="MoviesDirectedBies" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="NewMovieDBModel.User" />
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="AccountBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NewMovieDBModelStoreContainer" CdmEntityContainer="NewMovieDBEntities">
+          <EntitySetMapping Name="BoxOffices">
+            <EntityTypeMapping TypeName="NewMovieDBModel.BoxOffice">
+              <MappingFragment StoreEntitySet="BoxOffices">
+                <ScalarProperty Name="BoxOfficeID" ColumnName="BoxOfficeID" />
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="TotalSales" ColumnName="TotalSales" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="NewMovieDBModel.Building">
+              <MappingFragment StoreEntitySet="Buildings">
+                <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Directors">
+            <EntityTypeMapping TypeName="NewMovieDBModel.Director">
+              <MappingFragment StoreEntitySet="Directors">
+                <ScalarProperty Name="DirectorID" ColumnName="DirectorID" />
+                <ScalarProperty Name="DirectorName" ColumnName="DirectorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="NewMovieDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="NewMovieDBModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="NewMovieDBModel.Movy">
+              <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoviesDirectedBies">
+            <EntityTypeMapping TypeName="NewMovieDBModel.MoviesDirectedBy">
+              <MappingFragment StoreEntitySet="MoviesDirectedBy">
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="DirectorID" ColumnName="DirectorID" />
+                <ScalarProperty Name="IsMainDirector" ColumnName="IsMainDirector" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NewMovieDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

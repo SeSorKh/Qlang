@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8018d02c0c0c498f8abb7794f578c655" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="NewMovieDBModel.BoxOffice" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewMovieDBModel.Building" Width="1.5" PointX="9.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewMovieDBModel.Director" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewMovieDBModel.Employee" Width="1.5" PointX="7.375" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewMovieDBModel.Language" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewMovieDBModel.Movy" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewMovieDBModel.MoviesDirectedBy" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="NewMovieDBModel.FK__BoxOffice__Movie__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="NewMovieDBModel.FK__Employees__Build__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="NewMovieDBModel.FK__MoviesDir__Direc__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="NewMovieDBModel.FK__Movies__Language__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="NewMovieDBModel.FK__MoviesDir__Movie__2E1BDC42" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NewMovieDBModel.User" Width="1.5" PointX="7.5" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

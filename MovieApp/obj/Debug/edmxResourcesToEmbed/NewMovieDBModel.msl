@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NewMovieDBModelStoreContainer" CdmEntityContainer="NewMovieDBEntities">
+    <EntitySetMapping Name="BoxOffices">
+      <EntityTypeMapping TypeName="NewMovieDBModel.BoxOffice">
+        <MappingFragment StoreEntitySet="BoxOffices">
+          <ScalarProperty Name="BoxOfficeID" ColumnName="BoxOfficeID" />
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+          <ScalarProperty Name="TotalSales" ColumnName="TotalSales" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Buildings">
+      <EntityTypeMapping TypeName="NewMovieDBModel.Building">
+        <MappingFragment StoreEntitySet="Buildings">
+          <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+          <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Directors">
+      <EntityTypeMapping TypeName="NewMovieDBModel.Director">
+        <MappingFragment StoreEntitySet="Directors">
+          <ScalarProperty Name="DirectorID" ColumnName="DirectorID" />
+          <ScalarProperty Name="DirectorName" ColumnName="DirectorName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="NewMovieDBModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="NewMovieDBModel.Language">
+        <MappingFragment StoreEntitySet="Languages">
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movies">
+      <EntityTypeMapping TypeName="NewMovieDBModel.Movy">
+        <MappingFragment StoreEntitySet="Movies">
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MoviesDirectedBies">
+      <EntityTypeMapping TypeName="NewMovieDBModel.MoviesDirectedBy">
+        <MappingFragment StoreEntitySet="MoviesDirectedBy">
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+          <ScalarProperty Name="DirectorID" ColumnName="DirectorID" />
+          <ScalarProperty Name="IsMainDirector" ColumnName="IsMainDirector" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="NewMovieDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
